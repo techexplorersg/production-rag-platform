@@ -1,0 +1,30 @@
+[
+  {
+    "query_id": "q001",
+    "query": "What is retrieval augmented generation?",
+    "relevant_chunk_ids": [
+      "rag-guide-0"
+    ]
+  },
+  {
+    "query_id": "q002",
+    "query": "Why is hybrid retrieval useful?",
+    "relevant_chunk_ids": [
+      "retrieval-guide-0"
+    ]
+  },
+  {
+    "query_id": "q003",
+    "query": "What does reranking do in a RAG pipeline?",
+    "relevant_chunk_ids": [
+      "reranking-guide-0"
+    ]
+  },
+  {
+    "query_id": "q004",
+    "query": "Why should RAG systems be evaluated?",
+    "relevant_chunk_ids": [
+      "evaluation-guide-0"
+    ]
+  }
+]
