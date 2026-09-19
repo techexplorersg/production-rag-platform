@@ -291,3 +291,28 @@ Developer Change
 - CI/CD and automated testing
 - Containerized deployment
 - Architecture Decision Records
+
+## 🗺️ Roadmap
+
+### Implemented
+
+- [x] Document chunking
+- [x] Dense retrieval
+- [x] BM25 lexical retrieval
+- [x] Reciprocal Rank Fusion
+- [x] Cross-encoder reranking
+- [x] Retrieval evaluation metrics
+- [x] Regression quality gates
+- [x] Automated testing
+- [x] CI validation
+- [x] Architecture Decision Records
+
+### Planned
+
+- [ ] Provider-independent generation layer
+- [ ] Citation validation
+- [ ] Structured tracing
+- [ ] Generation evaluation
+- [ ] Retrieval benchmarking
+- [ ] Observability dashboard
+- [ ] Cloud deployment reference architecture
