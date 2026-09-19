@@ -42,7 +42,7 @@ This repository explores those engineering concerns as a modular reference imple
 | Deployment | Docker |
 
 ## Retrieval Pipeline
-
+```text
 Query
   │
   ├─────────────┐
@@ -65,6 +65,7 @@ Dense Search   BM25
          │
          ▼
 Answer + Sources
+```
 
 ## Engineering Decisions
 
