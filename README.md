@@ -241,3 +241,39 @@ Records rather than being hidden inside implementation details.
 
 See [`docs/decisions/`](docs/decisions/) for alternatives, trade-offs,
 consequences, and validation strategies.
+
+## 🔄 Engineering Quality & CI
+
+Every change is validated through an automated CI pipeline.
+
+```text
+Developer Change
+       │
+       ▼
+ Pull Request / Push
+       │
+       ▼
+┌─────────────────────┐
+│   GitHub Actions    │
+└──────────┬──────────┘
+           │
+    ┌──────┼───────────────┐
+    ▼      ▼               ▼
+ Formatting/Lint       Security Scan
+    │                      │
+    ▼                      │
+ Type Checking             │
+    │                      │
+    ▼                      ▼
+ Unit Tests ────────► Quality Validation
+    │
+    ▼
+ Coverage Report
+
+           +
+           
+      Docker Build
+           │
+           ▼
+ Deployable Artifact
+```
