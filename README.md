@@ -227,3 +227,17 @@ Code / Configuration Change
 The architecture is designed so different retrieval strategies can be evaluated behind the same interface, enabling controlled comparisons between vector search, lexical retrieval, hybrid retrieval, and reranked retrieval.
 
 > Thresholds and example values used in tests are engineering fixtures unless explicitly identified as measured benchmark results. This repository is a reference implementation rather than a claim about a client or production deployment.
+
+## 🧠 Architecture Decisions
+
+Significant design decisions are documented as Architecture Decision
+Records rather than being hidden inside implementation details.
+
+| Decision | Rationale |
+|---|---|
+| Hybrid Retrieval | Combine semantic and lexical retrieval failure modes |
+| Reciprocal Rank Fusion | Fuse heterogeneous rankings without relying on raw score scales |
+| Cross-Encoder Reranking | Trade additional inference cost for stronger candidate relevance scoring |
+
+See [`docs/decisions/`](docs/decisions/) for alternatives, trade-offs,
+consequences, and validation strategies.
