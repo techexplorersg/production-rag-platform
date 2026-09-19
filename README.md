@@ -316,3 +316,12 @@ Developer Change
 - [ ] Retrieval benchmarking
 - [ ] Observability dashboard
 - [ ] Cloud deployment reference architecture
+
+## Portfolio Disclosure
+
+This repository is an independent reference implementation created to
+demonstrate AI/ML engineering, architecture, evaluation, and software
+engineering practices.
+
+It should not be interpreted as a representation of work completed for
+a specific employer or client unless explicitly stated.
