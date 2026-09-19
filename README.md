@@ -1,3 +1,123 @@
+# Production RAG Platform
+
+> A production-oriented reference implementation for building, evaluating,
+> and operating Retrieval-Augmented Generation systems beyond the prototype stage.
+
+## Why This Project Exists
+
+A basic RAG demo can be built quickly:
+
+Document → Embedding → Vector Search → LLM
+
+Production-oriented RAG introduces harder engineering problems:
+
+- How do we combine semantic and lexical retrieval?
+- How do we rerank candidates?
+- How do we measure retrieval quality?
+- How do we detect regressions?
+- How do we trace sources used to generate an answer?
+- How do we monitor latency and failures?
+- How do we replace model providers without rewriting the application?
+
+This repository explores those engineering concerns as a modular reference implementation.
+
+> **Portfolio note:** This is an independent reference implementation created
+> to demonstrate AI/ML system-design patterns. It is not presented as client
+> or employer production work.
+
+## System Capabilities
+
+| Capability | Implementation |
+|---|---|
+| Semantic retrieval | Sentence Transformers + FAISS |
+| Lexical retrieval | BM25 |
+| Hybrid search | Reciprocal Rank Fusion |
+| Reranking | Cross-encoder |
+| API layer | FastAPI |
+| Retrieval evaluation | Recall@K, MRR, Hit Rate@K |
+| Regression protection | Configurable quality gates |
+| Latency evaluation | Mean + P95 |
+| Testing | pytest |
+| CI | GitHub Actions |
+| Deployment | Docker |
+
+## Retrieval Pipeline
+
+Query
+  │
+  ├─────────────┐
+  ▼             ▼
+Dense Search   BM25
+  │             │
+  └──────┬──────┘
+         ▼
+        RRF
+         │
+         ▼
+ Cross-Encoder
+    Reranking
+         │
+         ▼
+ Grounded Context
+         │
+         ▼
+        LLM
+         │
+         ▼
+Answer + Sources
+
+## Engineering Decisions
+
+### Why hybrid retrieval?
+
+Dense retrieval captures semantic similarity while BM25 remains effective
+for exact terminology, identifiers, acronyms, and keyword-heavy queries.
+
+### Why Reciprocal Rank Fusion?
+
+Dense similarity scores and BM25 scores are not directly comparable.
+RRF combines ranking positions instead of naively adding heterogeneous scores.
+
+### Why rerank?
+
+The first-stage retrievers optimize candidate discovery. A cross-encoder
+can perform a more expensive query-document relevance calculation over
+the smaller candidate set.
+
+### Why evaluate retrieval separately?
+
+When a RAG response fails, the failure may originate in retrieval,
+ranking, context construction, or generation. Measuring retrieval
+independently makes those failures easier to isolate.
+
+## Evaluation Strategy
+
+Changes to chunking, embedding models, retrieval parameters, fusion logic,
+or reranking should be evaluated against a version-controlled golden dataset.
+
+Measured dimensions include:
+
+- Recall@K
+- Mean Reciprocal Rank
+- Hit Rate@K
+- Mean retrieval latency
+- P95 retrieval latency
+
+Quality thresholds can be used as regression gates before changes are accepted.
+
+## Quick Start
+
+```bash
+git clone https://github.com/techexplorersg/production-rag-platform.git
+cd production-rag-platform
+
+python -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements.txt
+pytest -v
+```
+
 # production-rag-platform
 Production-grade RAG reference architecture with hybrid retrieval, reranking, grounded generation, evaluation, observability, and FastAPI serving.
 
