@@ -1,7 +1,9 @@
 # Production RAG Platform
 
-> A production-oriented reference implementation for building, evaluating,
-> and operating Retrieval-Augmented Generation systems beyond the prototype stage.
+> Production-oriented reference architecture for building,
+> evaluating and operating Retrieval-Augmented Generation systems.
+
+**Focus:** RAG · Hybrid Retrieval · Reranking · Evaluation · LLMOps · MLOps
 
 ## Why This Project Exists
 
@@ -278,3 +280,14 @@ Developer Change
            ▼
  Deployable Artifact
 ```
+
+## Key Engineering Areas
+
+- Hybrid dense + lexical retrieval
+- Reciprocal Rank Fusion
+- Cross-encoder reranking
+- Retrieval evaluation
+- Regression quality gates
+- CI/CD and automated testing
+- Containerized deployment
+- Architecture Decision Records
